@@ -17,7 +17,7 @@ app.use(express.json());
 app.post('/api/stt', upload.single('audio'), async (req, res) => {
     try {
         const formData = new FormData();
-        formData.append('audio', req.file.buffer, { filename: 'recording.wav' });
+        formData.append('content', req.file.buffer, { filename: 'recording.wav' });
         formData.append('language', 'yo');
 
         const response = await axios.post('https://api.spi-tch.com/v1/transcriptions', formData, {
